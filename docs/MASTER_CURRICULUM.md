@@ -387,7 +387,7 @@ Each of these four files has a separate responsibility.
 
 ---
 
-# 1. MASTER_CURRICULUM.md
+## Canonical File 1 — MASTER_CURRICULUM.md
 
 `MASTER_CURRICULUM.md` is this document.
 
@@ -417,7 +417,7 @@ Changes to this file should occur only when the curriculum itself is intentional
 
 ---
 
-# 2. PROGRESS_STATE.md
+## Canonical File 2 — PROGRESS_STATE.md
 
 `PROGRESS_STATE.md` records where the learner currently is in the curriculum and what work has actually been completed.
 
@@ -527,7 +527,7 @@ It must remain concise enough that a new mentor can read it quickly.
 
 ---
 
-# 3. LEARNING_STATE.md
+## Canonical File 3 — LEARNING_STATE.md
 
 `LEARNING_STATE.md` represents what the learner has actually demonstrated understanding of.
 
@@ -632,7 +632,7 @@ Understanding must be based on evidence such as:
 
 ---
 
-# 4. DECISIONS.md
+## Canonical File 4 — DECISIONS.md
 
 `DECISIONS.md` stores durable engineering and architecture decisions made while building the curriculum projects.
 
@@ -4378,41 +4378,48 @@ Explain:
 
 # 37. Notes Template
 
-Every major concept should produce notes using this structure:
+The **authoritative notes template is Section 3.A.2 — "Notes must be well structured."**
 
-```markdown
-# Concept
+Every distinct topic or sub-topic must use that exact canonical field order:
 
-## What is it?
+```text
+## <Topic Name>
 
-## Why does it exist?
+**What**
 
-## Mental model
+**Why**
 
-## How it works
+**How**
 
-## Important components
+**Mental Model**
 
-## Simple example
+**Architecture**
 
-## Common mistakes
+**Trade-offs**
 
-## Failure modes
+**Failure Modes**
 
-## Production considerations
+**Production**
 
-## Alternatives
+**When to Use**
 
-## When to use it
+**When Not to Use**
 
-## When NOT to use it
-
-## Interview questions
-
-## One-minute explanation
-
-## Key takeaway
+**Interview Questions**
 ```
+
+Do not substitute a second notes schema here or in later lessons.
+
+When a topic genuinely benefits from additional detail, the mentor may append optional enrichment **after** the canonical fields, for example:
+
+- important components;
+- tiny worked example;
+- common mistakes;
+- alternatives;
+- one-minute explanation;
+- key takeaway.
+
+Those optional additions do not replace, reorder, or make empty any required canonical field.
 
 ---
 
