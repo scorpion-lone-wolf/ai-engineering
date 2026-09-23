@@ -1,6 +1,6 @@
 # Production-Grade AI Engineering Learning Repository
 
-This repository contains one **linear, production-oriented AI Engineering curriculum** covering LLM applications, open models, retrieval/RAG, agents, LangGraph, MCP, memory/context engineering, evaluation, observability, AI security, gateways, performance, production backend engineering, cloud/deployment, LLMOps/AgentOps, system design, industry extensions, and a final capstone.
+This repository contains one **linear, production-oriented AI Engineering curriculum** covering LLM applications, open models, retrieval/RAG, agents, LangGraph, MCP, memory/context engineering, evaluation, observability, AI security, gateways, performance, production backend engineering, cloud/deployment, LLMOps/AgentOps, system design, industry extensions, an existing Phase 24 final capstone, and—only after those completion gates pass—a post-curriculum recruiter-facing flagship software product.
 
 ## Canonical Learning Files
 
@@ -16,7 +16,7 @@ Do not create duplicate curriculum/status copies under alternate names. The uplo
 
 ## Linear Progression
 
-The authoritative order is **Phase 0 → Phase 24**. Do not skip ahead.
+The authoritative curriculum order is **Phase 0 → Phase 24**. Do not skip ahead. After Phase 24 and the existing capstone are fully complete, Section 58 adds a separate **F0 → F17 post-curriculum flagship sequence**. The flagship is not a replacement phase and must not be started early.
 
 A later concept may be mentioned briefly when needed, but implementation stays in its assigned phase. Missing prerequisites may be repaired temporarily, then learning returns to the exact paused point.
 
@@ -39,9 +39,10 @@ At the initial state only the learning/control files are required. The curriculu
 
 - `projects/` — numbered project folders as their phases begin;
 - `shared/` — reusable components promoted only when reuse becomes real;
-- `capstone/` — created when Phase 24 begins.
+- `capstone/` — created when Phase 24 begins;
+- `flagship/engineering-intelligence-platform/` — created only after Phase 24 and the existing capstone completion gates pass.
 
-This avoids empty scaffolding and prevents implementing future-phase work early.
+This avoids empty scaffolding and prevents implementing future-phase or future-flagship work early.
 
 ## Hard Preservation Rule
 
