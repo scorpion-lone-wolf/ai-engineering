@@ -5531,3 +5531,779 @@ If no, study:
 - system design
 
 That is the standard this curriculum is designed to reach.
+
+---
+
+# 58. Post-Curriculum Flagship Software Product — AI Engineering Intelligence Platform
+
+This section is appended **after the complete Phase 0 → Phase 24 curriculum and its existing Final Capstone**.
+
+It does **not** replace, remove, reorder, shorten, or merge any earlier phase, topic, exercise, numbered project, industry extension, assignment, mastery gate, or capstone requirement.
+
+The purpose of this section is different from the earlier curriculum projects:
+
+> **After learning and integrating the curriculum, independently engineer one substantial software product that can be demonstrated to recruiters and defended in a system-design interview.**
+
+This is the final application of the curriculum, not a shortcut through it.
+
+## 58.1 Entry Gate — Do Not Start Early
+
+The flagship product must **not** begin until all of the following are true:
+
+- Phase 24 has been completed according to the existing phase-completion gate;
+- the existing Final Capstone has been completed to its required standard;
+- required notes, exercises, graded assignments, mastery checks, architecture artifacts, evaluation work, security work, deployment work, and other completion requirements are accurately recorded;
+- `PROGRESS_STATE.md` shows that the curriculum and capstone are complete;
+- `LEARNING_STATE.md` does not contain an unresolved core prerequisite that would make independent product engineering premature.
+
+Before this gate passes, the flagship may be mentioned only as a future destination.
+
+Do not create its production code, database schema, framework scaffolding, deployment stack, agent graph, retrieval system, or empty folder hierarchy early merely because the future design is known.
+
+## 58.2 One Repository Rule
+
+The flagship remains inside the same canonical repository:
+
+```text
+ai-engineering/
+├── docs/
+├── projects/
+├── shared/
+├── capstone/
+└── flagship/                         ← introduced only after the entry gate passes
+    └── engineering-intelligence-platform/
+```
+
+There is **no second Git repository** for this curriculum journey.
+
+The existing repository continues to be the source of truth.
+
+The flagship may reuse code from `shared/`, earlier numbered projects, and the Phase 24 capstone only when reuse is technically justified. Reuse must be deliberate: inspect the existing implementation, understand its contracts and limitations, then promote/refactor it as needed. Do not copy-paste old code merely to move faster.
+
+## 58.3 Working Product Concept
+
+Working title:
+
+**AI Engineering Intelligence Platform**
+
+The exact public product name may be chosen during product discovery.
+
+The product is a software-engineering intelligence system for development teams. It can connect to one or more codebases and relevant engineering knowledge, build a structured understanding of them, answer grounded questions, analyze change impact, help plan implementation work, and—only after the safer analysis capabilities are reliable—optionally assist with controlled code changes and verification.
+
+Example user questions:
+
+```text
+"How does authentication work in this repository?"
+
+"Where is payment retry implemented, and what depends on it?"
+
+"What would be affected if we change this API contract?"
+
+"Explain the request path from this endpoint to the database."
+
+"Design an implementation plan for adding idempotency here."
+
+"Which tests should change if this service contract changes?"
+```
+
+The product should combine AI engineering with normal software engineering. It must not be a thin chat UI around an LLM API.
+
+## 58.4 Product Engineering Principle
+
+The flagship should use **most of the curriculum capabilities that the product genuinely needs**, not every technology merely because it was learned.
+
+For every substantial capability, ask:
+
+```text
+What user or engineering problem requires this?
+        ↓
+What is the simplest reliable design?
+        ↓
+Do we need AI here?
+        ↓
+If yes, what AI mechanism is appropriate?
+        ↓
+What alternatives exist?
+        ↓
+How will we test, evaluate, secure, observe, and operate it?
+```
+
+It is acceptable—and often preferable—to reject a technology after analysis.
+
+Examples:
+
+- do not introduce multi-agent coordination if one deterministic workflow is easier to reason about;
+- do not add a graph database if code relationships can be represented adequately another way;
+- do not use MCP merely to place "MCP" in the README;
+- do not use an expensive model for work a smaller model or deterministic parser can perform reliably;
+- do not make an agent autonomous when a human approval boundary is safer.
+
+Engineering judgment is part of the deliverable.
+
+## 58.5 Expected Capability Areas
+
+The final product may draw from the following curriculum areas where justified.
+
+### Traditional software engineering
+
+- Python as the primary backend language;
+- API design;
+- FastAPI or another justified Python web framework;
+- typed domain models and validation;
+- PostgreSQL or another justified relational database;
+- schema migrations;
+- transactions and data integrity;
+- authentication;
+- authorization / RBAC;
+- organizations or workspaces;
+- tenant isolation where applicable;
+- background jobs;
+- asynchronous I/O;
+- queues where needed;
+- caching;
+- idempotency;
+- concurrency control;
+- retries and failure handling;
+- configuration and secrets;
+- API versioning where appropriate;
+- unit tests;
+- integration tests;
+- end-to-end tests;
+- CI/CD;
+- containerization;
+- health/readiness checks;
+- graceful shutdown;
+- backup/recovery thinking;
+- production deployment.
+
+### Repository and code intelligence
+
+- repository registration and synchronization;
+- language-aware file filtering;
+- parsing;
+- AST/symbol extraction where useful;
+- functions/classes/modules;
+- imports and references;
+- dependency relationships;
+- repository metadata;
+- incremental re-indexing;
+- change detection;
+- code-aware chunking;
+- documentation ingestion;
+- issue/specification ingestion where later connected.
+
+### Retrieval and knowledge
+
+- lexical search;
+- embeddings;
+- vector search;
+- metadata filtering;
+- hybrid retrieval;
+- reranking;
+- code-structure-aware retrieval;
+- graph/relationship retrieval where justified;
+- context selection and budgeting;
+- evidence tracking and citations.
+
+### AI application layer
+
+- model-provider abstraction;
+- model selection and routing;
+- structured generation;
+- grounded RAG;
+- streaming;
+- context management;
+- tool calling;
+- stateful workflows;
+- agentic investigation only where it improves the product;
+- MCP integrations where an external-tool protocol is genuinely useful;
+- memory where persistent user/project context has a clear requirement;
+- controlled human approval boundaries.
+
+### Quality, safety, and operations
+
+- deterministic tests;
+- golden evaluation datasets;
+- retrieval evaluation;
+- answer-groundedness evaluation;
+- task-success evaluation;
+- agent/tool evaluation when applicable;
+- regression gates;
+- prompt-injection defenses;
+- authorization around tools and repositories;
+- output validation;
+- PII/secrets handling;
+- audit logging;
+- threat modeling;
+- traces;
+- logs;
+- metrics;
+- model/retrieval diagnostics;
+- latency measurement;
+- cost measurement;
+- rate limiting;
+- caching;
+- fallbacks;
+- circuit breakers where justified;
+- load/performance testing;
+- monitoring;
+- rollback.
+
+## 58.6 Sequential Flagship Build Rule — No Jumping
+
+Even though the curriculum has already taught the underlying technologies, the flagship must still be built **one product layer at a time**.
+
+The mentor must not generate the whole architecture and then dump a complete implementation.
+
+For every milestone:
+
+```text
+Problem / requirement
+        ↓
+Existing-system inspection
+        ↓
+Relevant mental model
+        ↓
+Design alternatives
+        ↓
+Chosen design + ADR when durable
+        ↓
+Small implementation step
+        ↓
+Run / observe
+        ↓
+Tests
+        ↓
+Failure case
+        ↓
+Review / refactor
+        ↓
+Documentation / evidence
+        ↓
+Milestone completion gate
+        ↓
+NEXT milestone
+```
+
+A later milestone must not be implemented merely because it is exciting or convenient.
+
+If a later capability becomes relevant while working on an earlier milestone:
+
+1. explain only enough to understand why it may matter;
+2. record it as pending/parking-lot work if useful;
+3. return to the current milestone;
+4. implement it only when its milestone is reached.
+
+The flagship is a product, but the **no-jumping discipline remains mandatory**.
+
+## 58.7 Flagship Milestone Sequence
+
+The following order is authoritative unless a prerequisite defect is discovered and explicitly documented.
+
+### F0 — Readiness and repository reconstruction
+
+Before product work:
+
+- verify Phase 24 and the existing capstone are complete;
+- inspect `PROGRESS_STATE.md`;
+- inspect `LEARNING_STATE.md`;
+- inspect relevant `DECISIONS.md` entries;
+- inspect `shared/`, relevant earlier projects, and the capstone;
+- identify reusable components versus components that should remain project-specific;
+- record the exact starting state.
+
+**Completion gate:** the learner can explain what already exists, what can be reused, what must be built, and why the flagship is not replacing the capstone.
+
+### F1 — Product discovery and problem definition
+
+Define:
+
+- target users;
+- concrete user problems;
+- primary workflows;
+- non-goals;
+- functional requirements;
+- non-functional requirements;
+- privacy/security constraints;
+- initial success metrics;
+- demo scenario.
+
+Do not select technology merely because it is familiar.
+
+**Artifacts:**
+
+- concise product requirements;
+- user stories/use cases;
+- non-goals;
+- initial acceptance criteria.
+
+**Completion gate:** the problem is clear enough to judge whether a proposed feature belongs in the product.
+
+### F2 — System-design baseline
+
+Design only the baseline required for the first useful vertical slice:
+
+- system context;
+- major components;
+- trust boundaries;
+- initial data model;
+- API boundary;
+- background-work boundary;
+- repository-ingestion boundary;
+- deployment assumptions.
+
+Compare alternatives before committing to durable choices.
+
+Create ADRs for consequential decisions.
+
+**Completion gate:** the learner can trace one planned request end-to-end and defend the baseline architecture.
+
+### F3 — Python backend foundation
+
+Build the minimum production-oriented backend foundation:
+
+- Python project/package structure;
+- application configuration;
+- FastAPI or justified alternative;
+- database connection;
+- migrations;
+- health/readiness endpoint;
+- error model;
+- structured logging baseline;
+- test harness;
+- local development workflow.
+
+No AI feature is required yet.
+
+**Completion gate:** the backend starts reliably, tests run, migrations work, and one non-AI endpoint is covered by tests.
+
+### F4 — Identity, workspaces, and authorization
+
+Implement the application ownership boundary before repository intelligence:
+
+- users/identity integration;
+- organizations/workspaces if required;
+- authentication;
+- RBAC/authorization;
+- workspace/repository ownership rules;
+- tenant isolation tests;
+- audit-relevant identity context.
+
+**Completion gate:** unauthorized cross-workspace access is rejected and tested.
+
+### F5 — Repository onboarding and synchronization
+
+Add the first real domain capability:
+
+- repository registration;
+- source acquisition strategy;
+- allowed file rules;
+- repository metadata;
+- initial sync;
+- incremental change detection;
+- background ingestion job;
+- retry/idempotency behavior;
+- ingestion status.
+
+Do not add embeddings yet unless this milestone's accepted design explicitly requires them for a minimal experiment.
+
+**Completion gate:** a repository can be added, synchronized, re-synchronized safely, and its ingestion state is observable.
+
+### F6 — Deterministic code intelligence
+
+Understand code before asking an LLM to compensate for missing structure:
+
+- file classification;
+- language-aware parsing where supported;
+- symbols;
+- functions/classes/modules;
+- imports/references;
+- dependency relationships;
+- code-aware chunks;
+- deterministic lookup/search baseline.
+
+Start with a deliberately limited language set if necessary.
+
+**Completion gate:** the system can answer deterministic structural questions from parsed/indexed data without an LLM.
+
+### F7 — Retrieval baseline
+
+Build and measure retrieval progressively:
+
+1. lexical/search baseline;
+2. retrieval dataset;
+3. embeddings;
+4. vector index;
+5. metadata filtering;
+6. hybrid retrieval;
+7. reranking only after baseline measurement.
+
+Do not assume semantic search is automatically better.
+
+**Completion gate:** retrieval approaches are compared against a small evaluation set and the selected baseline is justified with evidence.
+
+### F8 — Grounded engineering assistant
+
+Add the first LLM-powered user value:
+
+- query classification only if required;
+- context assembly;
+- evidence/citation tracking;
+- grounded answer generation;
+- structured responses where useful;
+- streaming;
+- refusal/uncertainty behavior when evidence is insufficient;
+- model usage/cost tracking.
+
+**Completion gate:** answers are grounded in repository evidence, citations are traceable, and a basic evaluation suite exists.
+
+### F9 — Structural and dependency-aware retrieval
+
+Improve answers that require relationships rather than isolated chunks:
+
+- symbol-aware retrieval;
+- call/import/dependency relationships;
+- graph-like traversal where justified;
+- multi-hop context assembly;
+- repository architecture questions;
+- impact-analysis primitives.
+
+Use a dedicated graph database only if the requirements and measurements justify it.
+
+**Completion gate:** the system demonstrates measurable improvement on relationship/impact questions compared with F8.
+
+### F10 — Change-impact analysis and implementation planning
+
+Add software-engineering reasoning workflows:
+
+- change request decomposition;
+- affected components/files;
+- dependency/risk analysis;
+- proposed implementation sequence;
+- expected tests;
+- uncertainty and missing-information reporting;
+- structured implementation plans.
+
+Prefer deterministic orchestration where it is sufficient.
+
+**Completion gate:** plans are evaluated against curated change scenarios and unsupported claims are detectable.
+
+### F11 — Tools, MCP, and controlled agentic investigation
+
+Introduce tool-using workflows only after retrieval and planning are reliable.
+
+Possible tools:
+
+- repository search;
+- symbol lookup;
+- test lookup;
+- issue/spec lookup;
+- documentation lookup;
+- controlled external integrations;
+- MCP servers/clients where protocol standardization is useful.
+
+Add:
+
+- explicit tool schemas;
+- authorization;
+- timeouts;
+- bounded loops;
+- failure observations;
+- state persistence where needed;
+- human approval for consequential actions.
+
+**Completion gate:** tool use is observable, bounded, authorized, testable, and demonstrably better than the non-agentic alternative for selected workflows.
+
+### F12 — Sandboxed code-change workflow
+
+Only now consider controlled modification:
+
+- proposed patch generation;
+- sandbox/worktree boundary;
+- diff review;
+- lint/type-check/test execution;
+- failure feedback;
+- retry limits;
+- human approval;
+- no silent write to protected source;
+- audit trail.
+
+This milestone is optional if product discovery concludes that read/analyze/plan is the better product boundary. The decision must be documented.
+
+**Completion gate:** no generated change reaches the protected repository without explicit review/approval, and verification evidence is attached to the proposal.
+
+### F13 — Evaluation and regression system
+
+Consolidate evaluation into a product-level quality system:
+
+- retrieval dataset;
+- grounded-answer dataset;
+- change-impact scenarios;
+- planning scenarios;
+- agent/tool scenarios where applicable;
+- deterministic metrics;
+- carefully designed model-based evaluators where justified;
+- regression thresholds;
+- CI evaluation policy;
+- evaluator limitations.
+
+**Completion gate:** important product behavior can regress visibly rather than silently.
+
+### F14 — Security hardening
+
+Perform an explicit product threat-model and hardening pass:
+
+- repository authorization;
+- tenant isolation;
+- prompt injection through source content;
+- malicious instructions in docs/issues/code comments;
+- secrets/PII handling;
+- unsafe tool requests;
+- path/file boundaries;
+- data exfiltration risks;
+- audit logging;
+- abuse/rate controls;
+- dependency and supply-chain considerations.
+
+**Completion gate:** high-priority threats have controls and tests, with residual risks documented.
+
+### F15 — Observability, reliability, performance, and cost
+
+Instrument and measure the complete request paths:
+
+- distributed traces;
+- structured logs;
+- service metrics;
+- retrieval diagnostics;
+- model/tool spans;
+- queue/job visibility;
+- latency percentiles;
+- token/model cost;
+- cache behavior;
+- failure categories;
+- retry/fallback behavior;
+- concurrency/load tests;
+- performance bottleneck analysis.
+
+Optimize only after measurement.
+
+**Completion gate:** the learner can diagnose representative failures from telemetry and explain the major latency/cost bottlenecks with measured evidence.
+
+### F16 — Deployment and operational readiness
+
+Productionize the system:
+
+- containers;
+- environment separation;
+- secrets;
+- CI/CD;
+- database migration deployment;
+- worker deployment;
+- object/storage dependencies where applicable;
+- monitoring;
+- alerts;
+- health/readiness;
+- backup/recovery procedure;
+- rollback;
+- runbook;
+- deployment verification.
+
+Use cloud/Kubernetes complexity only to the level the product genuinely requires.
+
+**Completion gate:** a clean deployment can be reproduced and a failed release can be rolled back using documented steps.
+
+### F17 — Recruiter and interview release
+
+Only after the software is technically ready, package the evidence.
+
+Required recruiter-facing artifacts:
+
+- excellent root/flagship README navigation;
+- product problem statement;
+- architecture diagram;
+- request/data-flow diagram;
+- representative screenshots;
+- short demo video or reproducible live demo;
+- setup instructions;
+- API documentation;
+- evaluation report;
+- security/threat-model summary;
+- performance/latency report;
+- cost discussion;
+- observability screenshots/examples where safe;
+- key ADRs;
+- known limitations;
+- future improvements;
+- concise resume bullets;
+- 2–3 minute project explanation;
+- deeper system-design interview walkthrough.
+
+All resume/demo metrics must come from actual measurements. Never invent scale, latency, accuracy, cost savings, concurrency, or evaluation results.
+
+**Completion gate:** a recruiter can understand the problem and engineering depth quickly, while a senior engineer can inspect the repository and find evidence behind the claims.
+
+## 58.8 State Tracking During the Flagship
+
+The existing canonical state files remain authoritative.
+
+### `PROGRESS_STATE.md`
+
+When the flagship begins, record:
+
+- current stage: Post-Curriculum Flagship;
+- current milestone: F0 → F17;
+- current product slice;
+- implementation completed;
+- tests completed;
+- evaluation status;
+- security status where relevant;
+- observability status where relevant;
+- deployment status where relevant;
+- exact next engineering/action step.
+
+Do not mark a milestone complete because code was generated. Completion requires the milestone's gate to pass.
+
+### `LEARNING_STATE.md`
+
+Continue recording demonstrated engineering understanding, especially:
+
+- architecture reasoning;
+- trade-off decisions;
+- debugging ability;
+- operational reasoning;
+- security reasoning;
+- evaluation reasoning;
+- areas where the learner still depends on unexplained framework behavior.
+
+### `DECISIONS.md`
+
+Record durable choices such as:
+
+- framework/database choices;
+- repository-ingestion strategy;
+- parser/AST strategy;
+- retrieval architecture;
+- vector-store choice;
+- graph representation;
+- model/provider strategy;
+- agent vs deterministic workflow;
+- MCP boundaries;
+- authorization model;
+- evaluation architecture;
+- deployment architecture.
+
+Do not use ADRs as a transcript of every implementation detail.
+
+## 58.9 Required Flagship Engineering Artifacts
+
+Create these **incrementally when their milestone requires them**, not all upfront:
+
+- product requirements;
+- architecture diagram;
+- sequence/data-flow diagrams;
+- data model;
+- API contracts;
+- threat model;
+- ADRs;
+- evaluation datasets and reports;
+- test strategy and tests;
+- performance report;
+- cost report;
+- observability design/dashboard evidence;
+- deployment/runbook documentation;
+- known limitations;
+- recruiter/demo material.
+
+The repository should show the evolution of the product, but avoid empty ceremonial documents that contain no real engineering information.
+
+## 58.10 Flagship Completion Standard
+
+The flagship is complete only when the learner can independently:
+
+1. explain the user problem and non-goals;
+2. trace the system architecture end-to-end;
+3. explain the data model and ownership boundaries;
+4. explain repository ingestion and synchronization;
+5. explain deterministic code intelligence;
+6. explain and defend the retrieval design using measured evidence;
+7. explain how grounded answers are constructed and evaluated;
+8. explain when deterministic workflows were chosen over agents;
+9. explain any tool/MCP/agent boundaries and their authorization;
+10. explain security threats and mitigations;
+11. diagnose failures using traces/logs/metrics;
+12. explain measured latency, throughput, and cost;
+13. run the test/evaluation suites;
+14. deploy the system;
+15. explain rollback/recovery;
+16. identify known limitations honestly;
+17. defend major architecture decisions against alternatives;
+18. demonstrate the product to a recruiter without relying on vague claims.
+
+The target is not:
+
+> "I used LangChain, LangGraph, RAG, agents, and MCP in one repository."
+
+The target is:
+
+> **"I engineered a real software product, used AI where it created value, measured its behavior, secured it, deployed it, and can defend the decisions."**
+
+## 58.11 Final No-Jumping Rule
+
+This flagship does not weaken the curriculum's linear-learning rule.
+
+The complete journey is:
+
+```text
+Phase 0
+  ↓
+Phase 1
+  ↓
+...
+  ↓
+Phase 23
+  ↓
+Phase 24 — Existing Final Capstone
+  ↓
+Curriculum + Capstone Completion Gates
+  ↓
+F0 — Flagship readiness
+  ↓
+F1 — Product discovery
+  ↓
+F2 — Baseline system design
+  ↓
+F3 — Python backend foundation
+  ↓
+F4 — Identity / authorization
+  ↓
+F5 — Repository ingestion
+  ↓
+F6 — Deterministic code intelligence
+  ↓
+F7 — Retrieval baseline
+  ↓
+F8 — Grounded AI assistant
+  ↓
+F9 — Structural/dependency retrieval
+  ↓
+F10 — Change-impact / planning
+  ↓
+F11 — Tools / MCP / bounded agentic investigation
+  ↓
+F12 — Optional sandboxed code changes
+  ↓
+F13 — Evaluation / regression
+  ↓
+F14 — Security hardening
+  ↓
+F15 — Observability / reliability / performance / cost
+  ↓
+F16 — Deployment / operations
+  ↓
+F17 — Recruiter / interview release
+```
+
+Do not skip a milestone merely because its implementation appears straightforward.
+
+At every step, the learner must understand what is being built, why it exists, how it works, what can fail, how it is tested, and why the chosen design is preferable to the alternatives for this product.
+
