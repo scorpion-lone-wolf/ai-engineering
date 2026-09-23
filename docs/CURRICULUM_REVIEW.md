@@ -83,3 +83,24 @@ Key structural decisions:
 The durable repository/sequencing decision is also recorded in `docs/DECISIONS.md` as ADR-001.
 
 `PROGRESS_STATE.md` and `LEARNING_STATE.md` are intentionally **not** advanced to the flagship now, because the learner is still at the beginning of Phase 0. They should change only when actual progress reaches that stage.
+
+
+## Future-Ready Documentation Cleanup
+
+A final documentation-consistency pass was completed without starting Phase 0 or changing learner progress.
+
+The cleanup made two non-scope changes:
+
+- the four canonical-file descriptions inside the Persistent Learning and Project Continuity Protocol were changed from duplicate top-level numbered headings to subordinate **Canonical File 1–4** headings, removing ambiguity with the main curriculum section numbering;
+- Section 37 now explicitly points to Section 3.A.2 as the single authoritative notes template. Its useful extra note ideas remain available only as optional enrichment after the required canonical fields.
+
+No phase, topic, project, exercise, assignment, mastery gate, capstone requirement, flagship milestone, or learning scope was removed.
+
+The repository remains intentionally at:
+
+```text
+Phase 0 — AI Engineering Orientation
+Status: NOT STARTED
+```
+
+No project, shared, capstone, or flagship implementation scaffolding was created as part of this cleanup.
