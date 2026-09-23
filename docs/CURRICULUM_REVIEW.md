@@ -46,4 +46,40 @@ ai-engineering/
         └── README.md
 ```
 
-Do not create all `projects/`, `shared/`, or `capstone/` folders up front. The curriculum itself requires those to appear incrementally as the relevant phases begin.
+Do not create all `projects/`, `shared/`, `capstone/`, or `flagship/` folders up front. The curriculum itself requires those to appear incrementally as the relevant phases or post-curriculum entry gate are reached.
+
+
+## Post-Curriculum Flagship Addition
+
+A new **Section 58 — Post-Curriculum Flagship Software Product — AI Engineering Intelligence Platform** was appended after the existing curriculum.
+
+This addition does **not** replace, remove, reorder, shorten, or merge any existing phase, topic, numbered project, industry extension, assignment, mastery requirement, or the existing Phase 24 Final Capstone.
+
+The updated progression is:
+
+```text
+Phase 0 → Phase 24
+        ↓
+Existing Final Capstone completion gates
+        ↓
+Post-Curriculum Flagship
+        ↓
+F0 → F17 sequential flagship milestones
+```
+
+Key structural decisions:
+
+- the flagship stays in the **same Git repository**;
+- it is not a Phase 25 and does not alter the authoritative Phase 0 → Phase 24 curriculum order;
+- it begins only after Phase 24 and the existing capstone are complete;
+- its eventual location is `flagship/engineering-intelligence-platform/`;
+- that folder must **not** be created early;
+- the flagship itself follows a strict **F0 → F17 no-jumping sequence**;
+- existing `PROGRESS_STATE.md`, `LEARNING_STATE.md`, and `DECISIONS.md` remain the authoritative continuity files;
+- earlier project/shared/capstone code may be reused only after inspection and when technically justified;
+- technologies are selected because the product requires them, not merely because they appear in the curriculum;
+- recruiter-facing claims must be backed by actual tests, evaluations, measurements, and deployed-system evidence.
+
+The durable repository/sequencing decision is also recorded in `docs/DECISIONS.md` as ADR-001.
+
+`PROGRESS_STATE.md` and `LEARNING_STATE.md` are intentionally **not** advanced to the flagship now, because the learner is still at the beginning of Phase 0. They should change only when actual progress reaches that stage.
